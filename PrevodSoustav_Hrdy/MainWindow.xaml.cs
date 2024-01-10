@@ -38,14 +38,15 @@ namespace PrevodSoustav_Hrdy
             }
         }
 
-        private ulong BinNaDec(string text)
+        private long BinNaDec(string text)
         {
             var opacne = text.Reverse().ToArray();
             long hodnota = 0;
             for(int i = 0; i < opacne.Length; i++)
             {
-                hodnota += Convert.ToInt32(opacne[i]) * Convert.ToInt32 (Math.Pow(2,i)); 
+                hodnota +=int.Parse(opacne[i].ToString()) * Convert.ToInt32 (Math.Pow(2,i)); 
             }
+            return hodnota;
         }
 
         private bool JeBinarni (string text)
