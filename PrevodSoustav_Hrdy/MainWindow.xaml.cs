@@ -28,13 +28,31 @@ namespace PrevodSoustav_Hrdy
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string binText = txtVstup.Text;
+            if (JeBinarni(binText))
+            {
+                txtVystup.Text = BinNaDec(binText).ToString();
+            }
+            else
+            {
+                MessageBox.Show("není");
+            }
+        }
+
+        private ulong BinNaDec(string text)
+        {
+            var opacne = text.Reverse().ToArray();
+            long hodnota = 0;
+            for(int i = 0; i < opacne.Length; i++)
+            {
+                hodnota += Convert.ToInt32(opacne[i]) * Convert.ToInt32 (Math.Pow(2,i)); 
+            }
         }
 
         private bool JeBinarni (string text)
         {
             foreach(var znak in text)
             {
-                if (znak != '1' || znak != '0')
+                if (znak != '1' && znak != '0')
                 {
                     return false;
                 }
